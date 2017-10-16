@@ -45,8 +45,25 @@
             <%if (username != null) {%>
             <ul  class="nav navbar-nav  navbar-right">
                 <li class="nav-item"><p>Bem Vindo <%=username%><p></li>
-                <li class="nav-item"><a href="#" onclick="<%%>">Logout</a></li>
+                <form id="form_id" method="GET" onsubmit="return false;">
+                    <input type="hidden" name="logout" value="true" />
+                    <li class="nav-item"><a href="javascript:{}" onclick="document.getElementById('form_id').submit(); return false;">logout</a> 
+                </form>
                 
+                <%try{
+                    if(request.getParameter("logout") != null){
+                        sessao.invalidate();
+                    }
+                } catch(Exception e){
+                    
+                }%>
+                <script type="text/javascript">
+			
+			if(window.location.search){
+				//document.getElementById("form-clear").submit();
+				window.location.search = "";
+			}
+		</script>
             </ul>
             <%}%>
         </div>
