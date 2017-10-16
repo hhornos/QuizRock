@@ -1,0 +1,4 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<link href='./assets/vendor/bootstrap/css/bootstrap.min.css' rel="stylesheet">
+<script src='./assets/vendor/jquery/js/jquery.min.js' type="text/javascript" defer="defer"></script>
