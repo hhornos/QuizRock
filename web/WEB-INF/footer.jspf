@@ -1,6 +1,38 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
-<footer class="bg-faded text-center py-5">
+<style>
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  margin-top: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 20px; /* Vertically center the text there */
+  /*background-color: #f5f5f5;*/
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container {
+/*  width: auto;
+  max-width: 680px;
+  padding: 0 15px;*/
+}
+</style>
+
+<footer class="bg-faded text-center py-4 footer">
       <div class="container">
         <p class="m-0">Direitos autorais &copy; Fatec Dream Team 2017</p>
       </div>
