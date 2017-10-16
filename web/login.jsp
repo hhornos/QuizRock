@@ -80,47 +80,50 @@
 
         %>
         <%@include file="WEB-INF/header.jspf" %>
-        <div id="login" class="bg-faded p-4 my-4"> 
-            <h1 class="my-2">LOGIN</h1>
-            <fieldset>
-                <legend>LOGIN</legend>
-                <form action="" id="loginForm" method="POST">
-                    <label>Usuário</label>
-                    <input type="text" name="userName" required />
-                    </br>
-                    <label>Senha</label>
-                    <input type="password" name="password" required />
-                    </br>
-                    </br>
-                    <input type="submit" name="login" value="Entrar">
-                </form>    
-            </fieldset>
-
-        <button class="" onclick="register()">Registrar-se</button>
-    </div>
-    <% if (isError) { %>    
-    <div>
-        <h5>Usuário ou senha Inválidos</h5>
-    </div>
-    <%}%>
-    <div id="registro">
-        <fieldset>
-            <legend>Novo Usuário</legend>
-            <form method="POST" id="register">
-                <label>Usuário</label>
-                <input type="text" name="newUserName"  required />
-                </br>
-                <label>Senha</label>
-                <input type="password" name="newPassword" id="newPassword" required />
-                </br>
-                <label>Confirmar Senha</label>
-                <input type="password" name="newPasswordConfirm" id="newPasswordConfirm" required />
-                </br>
-                </br>
-                <input type="submit" name="register" value="Cadastrar">
-            </form>
-        </fieldset>
-    </div>
-    <%@include file="WEB-INF/footer.jspf" %>
-</body>
+        <div class="container" style="margin-top: 10%">
+            <div class="row">
+                <div id="login" class="bg-faded p-4 my-4"> 
+                    <h1 class="my-2">LOGIN</h1>
+                    <fieldset>
+                        <legend>LOGIN</legend>
+                        <form action="" id="loginForm" method="POST">
+                            <label>Usuário</label>
+                            <input type="text" name="userName" required />
+                            </br>
+                            <label>Senha</label>
+                            <input type="password" name="password" required />
+                            </br>
+                            </br>
+                            <input type="submit" name="login" value="Entrar">
+                        </form>    
+                    </fieldset>
+                    <button class="" onclick="register()">Registrar-se</button>
+                </div>
+                <% if (isError) { %>    
+                <div>
+                    <h5>Usuário ou senha Inválidos</h5>
+                </div>
+                <%}%>
+                <div id="registro">
+                    <fieldset>
+                        <legend>Novo Usuário</legend>
+                        <form method="POST" id="register">
+                            <label>Usuário</label>
+                            <input type="text" name="newUserName"  required />
+                            </br>
+                            <label>Senha</label>
+                            <input type="password" name="newPassword" id="newPassword" required />
+                            </br>
+                            <label>Confirmar Senha</label>
+                            <input type="password" name="newPasswordConfirm" id="newPasswordConfirm" required />
+                            </br>
+                            </br>
+                            <input type="submit" name="register" value="Cadastrar">
+                        </form>
+                    </fieldset>
+                </div>
+            </div>
+            <%@include file="WEB-INF/footer.jspf" %>
+        </div>
+    </body>
 </html>
