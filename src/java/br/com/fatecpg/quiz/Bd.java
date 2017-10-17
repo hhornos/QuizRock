@@ -6,7 +6,6 @@
 package br.com.fatecpg.quiz;
 
 import java.util.ArrayList;
-import org.apache.tomcat.util.digester.ArrayStack;
 
 /**
  *
@@ -17,7 +16,7 @@ public class Bd {
 
     public static ArrayList<Usuario> getUsuario() {
         if(usuario == null){
-            usuario = new ArrayStack<>();
+            usuario = new ArrayList<>();
         }
         return usuario;
     }
