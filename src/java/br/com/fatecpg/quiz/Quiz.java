@@ -6,6 +6,7 @@
 package br.com.fatecpg.quiz;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -27,12 +28,20 @@ public class Quiz {
     public static ArrayList<Questao> getQuestoes() {
         if (questoes == null) {
             questoes = new ArrayList<>();
-            for (int i=1; i<=10; i++) {
-                Questao q = new Questao("1 + " + i + "?", Integer.toString(1+i),
-                        new String[] {Integer.toString(1+i), Integer.toString(1-i),
-                            Integer.toString(i)});
-                questoes.add(q);
-            }
+            
+                questoes.add(new Questao(1,"Mick Jagger, vocalista do Rolling Stones, escreve a música \"Angie\" em homenagem a uma esposa de um rockstar. Quem é essa esposa?", "Esposa de David Bowie",new String[] {"Esposa de Ozzy Osbourne", "Esposa de David Bowie","Esposa de George Harrison"}));
+                questoes.add(new Questao(2,"A música \"Fairies Wear Boots\", foi composta pelo Black Sabbath depois de:", "Apanhar de um grupo de skinheads",new String[] {"Góticos que bebiam perto do cemitério onde gravaram a músic", "Jovens ingleses que se alistaram para a guerra das Malvinas","Apanhar de um grupo de skinheads"}));
+                questoes.add(new Questao(3,"O AC/DC gravou uma trilha com videoclipe para o filme \"O Último Grande Herói\", estrelado por Arnold Schwarzenegger. Que música é essa?", "Big Gun",new String[] {"You Shook Me Night All Long", "Big Gun","Hard As A Rock"}));
+                questoes.add(new Questao(4,"A banda brasileira \"IRA!\" abre seu Acústico MTV com um cover em português de \"Train in Vain\". Que banda é essa?", "The Clash",new String[] {"Sex Pistols", "Ramones","The Clash"}));
+                questoes.add(new Questao(5,"Em que ano foi formada a famosa banda Black Sabbath", "1968",new String[] {"1968", "1970","1965"}));
+                questoes.add(new Questao(6,"Qual dos integrantes dos Ramones fez uma jam com os brasileiros da banda Raimundos?", "Marky Ramone",new String[] {"Marky Ramone", "Dee Dee Ramone","Joey Ramone"}));
+                questoes.add(new Questao(7,"Que banda inglesa banda, dos anos 70, usou um balão de gás de Hélio em um formato de um porco, para fazer o lançamento do disco?", "Pink Floyd",new String[] {"Pink Floyd", "Queen","Iron Maiden"}));
+                questoes.add(new Questao(8,"Quais são os integrantes originais da banda Beatles ?", "John Lennon, Paul McCartney, George Harrison, Stu Sutcliffe e Peter Best",new String[] {"John Lennon, Jimmy Page, Paul McCartney, Stu Sutcliffe e George Harrison", "Jim Morrison, Paul McCartney ,George Harrison, John Lennon e Stu Sutcliffe","John Lennon, Paul McCartney, George Harrison, Stu Sutcliffe e Peter Best"}));
+                questoes.add(new Questao(9,"Ozzy Osbourne, em um show, mordeu a cabeça de um animal. Que animal era esse?", "Morcego",new String[] {"Pombo", "Morcego","Rato"}));
+                questoes.add(new Questao(10,"Após a morte de Kurt Cobain, em 1994, Dave Grohl formou uma banda em 1995. Que banda é essa?", "Foo Fighters",new String[] {"Foo Fighters", "Dave Grohl Project","Kung Fu Fighter's"}));
+                
+                
+                
         }
         return questoes;
     }
