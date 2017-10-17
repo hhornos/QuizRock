@@ -27,7 +27,7 @@
     </head>
     <body>
         <%@include file="./WEB-INF/header.jspf" %>
-        <%
+        <% if (username != null) {
                 if (request.getParameter("finalizar") != null) {
                     int acertos = 0;
                     for (int x = 0; x < 10; x++) {
@@ -39,7 +39,7 @@
                             }   
                         }
                     }
-        %><h1><%=acertos%></h1><%
+        
                     
                         
                    
@@ -66,7 +66,9 @@
                 <input type="submit" name="finalizar" value="Finalizar"/>
             </form>  
                 
-        
+        <%}else{
+                response.sendRedirect(request.getContextPath() + "/login.jsp");
+                }%>
         <%@include file="./WEB-INF/footer.jspf" %>
     </body>
 </html>
