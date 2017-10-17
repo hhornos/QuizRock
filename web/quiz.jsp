@@ -40,7 +40,7 @@
                         }
                     }
         
-                    
+                    out.print("<script>alert('Parabens você acertou : "+acertos+" ');</script>");
                         
                    
                     
