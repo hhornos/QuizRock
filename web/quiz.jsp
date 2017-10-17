@@ -4,6 +4,8 @@
     Author     : hhornos
 --%>
 
+<%@page import="br.com.fatecpg.quiz.Questao"%>
+<%@page import="br.com.fatecpg.quiz.Quiz"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,6 +27,46 @@
     </head>
     <body>
         <%@include file="./WEB-INF/header.jspf" %>
+        <%
+                if (request.getParameter("finalizar") != null) {
+                    int acertos = 0;
+                    for (int x = 0; x < 10; x++) {
+                        Questao p = Quiz.getQuestoes().get(x);
+                        String resposta = request.getParameter(Integer.toString(p.getNumero()));
+                        if (resposta != null) {
+                            if (resposta.equals(p.getResposta())) {
+                                acertos++;
+                            }   
+                        }
+                    }
+        %><h1><%=acertos%></h1><%
+                    
+                        
+                   
+                    
+                }
+            %>
+        
+        
+        <form>
+                <%for (int i = 1; i < 11; i++) {
+                      Questao p = Quiz.getQuestoes().get(i-1);
+                %>
+                <h3>Questão <%=i%>:</h3>
+                <h4><%=p.getPergunta()%></h4>
+                <input type="radio" name="<%=p.getNumero()%>" value="<%=p.getAlternativas()[0]%>" required/>
+                <%=p.getAlternativas()[0]%> </br>      
+                <input type="radio" name="<%=p.getNumero()%>" value="<%=p.getAlternativas()[1]%>" required/>
+                <%=p.getAlternativas()[1]%>  </br>   
+                <input type="radio" name="<%=p.getNumero()%>" value="<%=p.getAlternativas()[2]%>" required/>
+                <%=p.getAlternativas()[2]%>  </br>   
+                <br/>
+                <%}%>
+                <br/>
+                <input type="submit" name="finalizar" value="Finalizar"/>
+            </form>  
+                
+        
         <%@include file="./WEB-INF/footer.jspf" %>
     </body>
 </html>
