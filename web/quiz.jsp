@@ -6,6 +6,8 @@
 
 <%@page import="br.com.fatecpg.quiz.Questao"%>
 <%@page import="br.com.fatecpg.quiz.Quiz"%>
+<%@page import="br.com.fatecpg.quiz.Historico"%>
+<%@page import="br.com.fatecpg.quiz.Bd"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -44,7 +46,16 @@
                     }
                     q.setSoma(acertos);
                     
+                    Historico h = new Historico();
+                    h.addNota(acertos,username);
+                    Bd bancodedados = new Bd();
+                    bancodedados.addHistorico(h);
+                    
+                    
+                    
                     %>
+                    
+                    
                     <div class="bg-faded">
                     <%out.print("<script>alert('Parabens você acertou : "+acertos+" ');</script>");
                     out.println("media de acertos: "+q.getMedia());
@@ -54,8 +65,7 @@
                    
                     
                 }
-            %>
-        
+            %>        
         <div class="container">
             <div class="bg-faded p-4 my-4">
                 <form method="POST">
@@ -75,7 +85,38 @@
                     <br/>
                     <input class="btn btn-success btn-lg" type="submit" name="finalizar" value="Finalizar"/>
                 </form>
-            </div>>
+            </div>
+<%
+    Bd bd = new Bd();
+    if(bd.getHistorico().size()!=0){%>
+        <div class="bg-faded p-4 my-4">
+            <h4>Ultimos testes realizados</h4>
+            <table style="width:100%;">
+                <tr>
+                    <td>Nome</td>
+                    <td>Nota</td>
+                </tr>
+                            
+                <%
+                    if(bd.getHistorico().size()<10){
+                        for(int i=0; i<bd.getHistorico().size(); i++){
+                            Historico h= Bd.getHistorico().get(i);%>
+                                <tr>
+                                    <td><%=h.getNome() %></td>
+                                    <td><%=h.getNota() %></td>
+                                </tr>
+                        <%}}else if(bd.getHistorico().size()>=10){
+                            for(int i=(bd.getHistorico().size())-10; i<bd.getHistorico().size(); i++){
+                                Historico h= Bd.getHistorico().get(i);%>
+                                    <tr>
+                                        <td><%=h.getNome() %></td>
+                                        <td><%=h.getNota() %></td>
+                                    </tr>
+                        <%}}%>
+                                </table>
+                            </div>
+                    <%}%>
+                    
         </div>>
         <%}else{
                 response.sendRedirect(request.getContextPath() + "/login.jsp");
