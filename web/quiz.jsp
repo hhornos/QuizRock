@@ -27,6 +27,7 @@
     </head>
     <body>
         <%@include file="./WEB-INF/header.jspf" %>
+        <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 pt-5 d-none d-lg-block">Quizz Classic Rock</div>
         <% if (username != null) {
                 if (request.getParameter("finalizar") != null) {
                     int acertos = 0;
@@ -47,25 +48,27 @@
                 }
             %>
         
-        
-        <form>
-                <%for (int i = 1; i < 11; i++) {
-                      Questao p = Quiz.getQuestoes().get(i-1);
-                %>
-                <h3>Questão <%=i%>:</h3>
-                <h4><%=p.getPergunta()%></h4>
-                <input type="radio" name="<%=p.getNumero()%>" value="<%=p.getAlternativas()[0]%>" required/>
-                <%=p.getAlternativas()[0]%> </br>      
-                <input type="radio" name="<%=p.getNumero()%>" value="<%=p.getAlternativas()[1]%>" required/>
-                <%=p.getAlternativas()[1]%>  </br>   
-                <input type="radio" name="<%=p.getNumero()%>" value="<%=p.getAlternativas()[2]%>" required/>
-                <%=p.getAlternativas()[2]%>  </br>   
-                <br/>
-                <%}%>
-                <br/>
-                <input type="submit" name="finalizar" value="Finalizar"/>
-            </form>  
-                
+        <div class="container">
+            <div class="bg-faded p-4 my-4">
+                <form>
+                    <%for (int i = 1; i < 11; i++) {
+                          Questao p = Quiz.getQuestoes().get(i-1);
+                    %>
+                    <h3>Questão <%=i%>:</h3>
+                    <h4><%=p.getPergunta()%></h4>
+                    <input type="radio" name="<%=p.getNumero()%>" value="<%=p.getAlternativas()[0]%>" required/>
+                    <%=p.getAlternativas()[0]%> </br>      
+                    <input type="radio" name="<%=p.getNumero()%>" value="<%=p.getAlternativas()[1]%>" required/>
+                    <%=p.getAlternativas()[1]%>  </br>   
+                    <input type="radio" name="<%=p.getNumero()%>" value="<%=p.getAlternativas()[2]%>" required/>
+                    <%=p.getAlternativas()[2]%>  </br>   
+                    <br/>
+                    <%}%>
+                    <br/>
+                    <input class="btn btn-success btn-lg" type="submit" name="finalizar" value="Finalizar"/>
+                </form>
+            </div>>
+        </div>>
         <%}else{
                 response.sendRedirect(request.getContextPath() + "/login.jsp");
                 }%>

@@ -43,49 +43,47 @@
 
         <script src='./assets/vendor/jquery/jquery.min.js' type="text/javascript"  ></script>
         <script src="assets/js/login.js" defer="defer"></script>
+        
+        <style>
+            .box {
+                margin-left: 35%;
+                margin-right: 35%;
+                width: 30%;
+                height: auto;
+                border-radius: 5px;
+                padding: 10px;
+            }
+
+            .col-lg-3{
+                padding-right: 0;
+            }
+            .col-lg-3 label{
+                float: right;
+                text-align: right;
+            }
+            .row{
+                margin-bottom: 8px;
+            }
+
+            .btnLogin,.btnCancel{
+                width: 80px;
+                margin-top: 5px;
+                margin-left: 30px;
+            }
+
+            #registro .btnLogin,.btnCancel{
+                width: 100px;
+                margin-top: 5px;
+                margin-left: 30px;
+            }
+
+            .btnRegister{
+                margin-top: 16px;
+                float: left;
+                text-align: left;
+            }
+        </style>
     </head>
-
-    <style>
-        .box {
-            margin-left: 35%;
-            margin-right: 35%;
-            width: 30%;
-            height: auto;
-            border-radius: 5px;
-            padding: 10px;
-        }
-        
-        .col-lg-3{
-            padding-right: 0;
-        }
-        .col-lg-3 label{
-            float: right;
-            text-align: right;
-        }
-        .row{
-            margin-bottom: 8px;
-        }
-
-        .btnLogin,.btnCancel{
-            width: 80px;
-            margin-top: 5px;
-            margin-left: 30px;
-        }
-        
-        #registro .btnLogin,.btnCancel{
-            width: 100px;
-            margin-top: 5px;
-            margin-left: 30px;
-        }
-
-        .btnRegister{
-            margin-top: 16px;
-            float: left;
-            text-align: left;
-        }
-
-
-    </style>
     <body style="margin-top: 150px">
 
         <%

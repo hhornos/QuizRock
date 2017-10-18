@@ -40,13 +40,13 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img class="d-block img-fluid w-100" src="assets/img/acdc.jpg" alt="">
+                            <img class="d-block img-fluid w-100" src="./assets/img/acdc.jpg" alt="">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block img-fluid w-100" src="assets/img/ozzyxdio.jpg" alt="">
+                            <img class="d-block img-fluid w-100" src="./assets/img/ozzyxdio.jpg" alt="">
                         </div>
                         <div class="carousel-item">
-                          <img class="d-block img-fluid w-100" src="assets/img/ledzeppelin.jpg" alt="">
+                          <img class="d-block img-fluid w-100" src="./assets/img/ledzeppelin.jpg" alt="">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselImagensRock" role="button" data-slide="prev">
@@ -74,62 +74,54 @@
                     <strong>Nosso Time</strong>
                 </h2>
                 <hr class="divider">
-                <div>
+                <div class="row">
                     <div class="col-md-3">
-                        <img class="img-fluid float-left mr-4 d-lg-block rounded-circle" src="./assets/img/henrique_hornos.jpg" alt="">
+                        <img class="img-fluid mr-4 rounded-circle" src="./assets/img/henrique_hornos.jpg" alt="">
                     </div>
                     
-                    <div class="col-md-12">
+                    <div class="col-md-9">
                         <h2>Henrique Escobar Hornos</h2>
                         <br/>
                         <p>Analista/Desenvolvedor de terminais embarcados, especialista no mercado de pagamentos eletronico, aprendendo programação programação WEB FULL STACK utilizando Java EE, entusiasta de software livre e apaixonado por música</p>
                     </div>
                     <br/>
-                    <br/>
                 </div>
                 <br/>
-                <br/>
-                <div>
+                <div class="row">
                     <div class="col-md-3">
-                        <img class="img-fluid float-left mr-4 d-lg-block rounded-circle" src="./assets/img/rodrigo corneta.jpg" alt="">
+                        <img class="img-fluid mr-4 rounded-circle" src="./assets/img/rodrigo_corneta.jpg" alt="">
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-9">
                         <h2>Rodrigo Corneta F. de Alcantara</h2>
                         <br/>
                         <p>Adicione Aqui o seu cargo</p>
                     </div>
                     <br/>
-                    <br/>
                 </div>
                 <br/>
-                <br/>
-                <div>
+                <div class="row">
                     <div class="col-md-3">
-                        <img class="img-fluid float-left mr-4  d-lg-block rounded-circle" src="./assets/img/luiz_maciel.jpg" alt="">
+                        <img class="img-fluid mr-4  rounded-circle" src="./assets/img/luiz_maciel.jpg" alt="">
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-9">
                         <h2>Luiz Maciel S. dos Santos</h2>
                         <br/>
                         <p>Adicione Aqui o seu cargo</p>
                     </div> 
                     <br/>
-                    <br/>
                 </div>
                 <br/>
-                <br/>
-                <div>
+                <div class="row">
                     <div class="col-md-3">
-                        <img class="img-fluid float-left mr-4 d-lg-block rounded-circle" src="./assets/img/vinicius_loreto.jpg" alt="">
+                        <img class="img-fluid mr-4 rounded-circle" src="./assets/img/vinicius_loreto.jpg" alt="">
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-9">
                         <h2>Vinicius Loreto Ferreira </h2>
                         <br/>
                         <p>Adicione Aqui o seu cargo</p>
                     </div>
                     <br/>
-                    <br/>
                 </div>
-                <br/>
                 <br/>
             </div>
 
