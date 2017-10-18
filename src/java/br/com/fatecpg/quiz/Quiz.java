@@ -7,23 +7,44 @@ package br.com.fatecpg.quiz;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 
 /**
  *
  * @author hhornos
  */
 public class Quiz {
-    public static int quantidade;
-    public static double soma;
-    
-    public static double getMedia() {
-        if (soma == 0)
-            return 0;
-        
-        return soma/(double)quantidade;
+    //public static int quantidade;
+    private double soma;
+    private String user;
+    private static ArrayList<Questao> questoes;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public double getSoma() {
+        return soma;
+    }
+
+    public void setSoma(double soma) {
+        this.soma = soma;
     }
     
-    private static ArrayList<Questao> questoes;
+    
+    
+    public double getMedia() {
+        if (this.soma == 0)
+            return 0;
+        
+        return this.soma/10;
+    }
+    
+    
     
     public static ArrayList<Questao> getQuestoes() {
         if (questoes == null) {

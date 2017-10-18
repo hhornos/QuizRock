@@ -31,8 +31,10 @@
         <% if (username != null) {
                 if (request.getParameter("finalizar") != null) {
                     int acertos = 0;
+                    Quiz q = new Quiz();
+                    q.setUser(username);
                     for (int x = 0; x < 10; x++) {
-                        Questao p = Quiz.getQuestoes().get(x);
+                        Questao p = q.getQuestoes().get(x);
                         String resposta = request.getParameter(Integer.toString(p.getNumero()));
                         if (resposta != null) {
                             if (resposta.equals(p.getResposta())) {
@@ -40,9 +42,15 @@
                             }   
                         }
                     }
-        
-                    out.print("<script>alert('Parabens você acertou : "+acertos+" ');</script>");
-                        
+                    q.setSoma(acertos);
+                    
+                    %>
+                    <div class="bg-faded">
+                    <%out.print("<script>alert('Parabens você acertou : "+acertos+" ');</script>");
+                    out.println("media de acertos: "+q.getMedia());
+                    out.println("Nome do usuário atribuido ao quiz: "+q.getUser());%>
+                    </div>
+                    <%  
                    
                     
                 }
@@ -50,7 +58,7 @@
         
         <div class="container">
             <div class="bg-faded p-4 my-4">
-                <form>
+                <form method="POST">
                     <%for (int i = 1; i < 11; i++) {
                           Questao p = Quiz.getQuestoes().get(i-1);
                     %>

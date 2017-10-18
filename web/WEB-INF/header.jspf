@@ -46,17 +46,22 @@
                 <%try{
                     if(request.getParameter("logout") != null){
                         sessao.invalidate();
-                    }
-                } catch(Exception e){
-                    
-                }%>
-                <script type="text/javascript">
+                        
+                        %>
+                    <script type="text/javascript">
 			
 			if(window.location.search){
 				//document.getElementById("form-clear").submit();
 				window.location.search = "";
 			}
 		</script>
+                    <%
+                    }
+                    
+                } catch(Exception e){
+                    
+                }%>
+                
             </ul>
             <%}%>
         </div>
