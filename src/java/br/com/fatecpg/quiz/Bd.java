@@ -13,12 +13,24 @@ import java.util.ArrayList;
  */
 public class Bd {
     private static ArrayList<Usuario> usuario;
+    private static ArrayList<Historico> historico;
 
     public static ArrayList<Usuario> getUsuario() {
         if(usuario == null){
             usuario = new ArrayList<>();
         }
         return usuario;
+    }
+    
+    public static ArrayList<Historico> getHistorico() {
+        if(historico == null){
+            historico = new ArrayList<>();
+        }
+        return historico;
+    }
+    
+    public static void addHistorico(Historico historico) {
+        Bd.getHistorico().add(historico);
     }
 
     public static void addUsuario(Usuario usuario) {
