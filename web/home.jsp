@@ -95,7 +95,7 @@
                     <div class="col-md-9">
                         <h2>Rodrigo Corneta F. de Alcantara</h2>
                         <br/>
-                        <p>Adicione Aqui o seu cargo</p>
+                        <p>Desenvolvedor de back-end e front-end, com experiência em javascript e geotecnologias.</p>
                     </div>
                     <br/>
                 </div>

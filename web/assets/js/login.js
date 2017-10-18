@@ -13,7 +13,7 @@ function finishRegister() {
         document.getElementById("newPasswordConfirm").value="";
         return false;
     } else{
-        alert('Cadastro efetuado com sucesso!');
+        //alert('Cadastro efetuado com sucesso!');
         document.getElementById("login").style.display = "block";
         document.getElementById("registro").style.display = "none";
         document.getElementById('register').submit();
