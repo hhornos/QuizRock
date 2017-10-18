@@ -107,7 +107,7 @@
                     <div class="col-md-9">
                         <h2>Luiz Maciel S. dos Santos</h2>
                         <br/>
-                        <p>Adicione Aqui o seu cargo</p>
+                        <p>Desenvolvedor back end, realizando curso superior de análise e desenvolvimento de sistemas, aprendendo programação orientada a objeto</p>
                     </div> 
                     <br/>
                 </div>
@@ -119,7 +119,7 @@
                     <div class="col-md-9">
                         <h2>Vinicius Loreto Ferreira </h2>
                         <br/>
-                        <p>Adicione Aqui o seu cargo</p>
+                        <p>Analista e desenvolvedor de sistemas/ Técnico em desenvolvimento de sistemas elétricos / Pesquisador de novas tecnologias nos campos da informática.</p>
                     </div>
                     <br/>
                 </div>
