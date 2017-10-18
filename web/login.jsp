@@ -89,8 +89,6 @@
         <%
             Bd bd = new Bd();
             boolean isError = false;
-            boolean isError2 = false;
-            String erroRegistro = "";
             try {
                 if (request.getParameter("login") != null) {
                     Usuario user = new Usuario(request.getParameter("userName"), request.getParameter("password"));
@@ -104,25 +102,23 @@
                     }
                 }
                 if (request.getParameter("register") != null) {
-                    if (!bd.verifUserExist(request.getParameter("newUserName"))) {
-                        if (request.getParameter("newPassword").equals(request.getParameter("newPasswordConfirm"))) {
-                            Usuario user = new Usuario(request.getParameter("newUserName"), request.getParameter("newPassword"));
-                            bd.addUsuario(user);
-
-                        } else {
+                    if (bd.verifUserExist(request.getParameter("newUserName"))) {
         %><SCRIPT TYPE="text/javascript">
-
             alert("Usuário já cadastrado!");
-
         </SCRIPT><%
-              }
+        } else {
+            if (request.getParameter("newPassword").equals(request.getParameter("newPasswordConfirm"))) {
+                Usuario user = new Usuario(request.getParameter("newUserName"), request.getParameter("newPassword"));
+                bd.addUsuario(user);
+        %><SCRIPT TYPE="text/javascript">
+            alert("Usuário Cadastrado com sucesso!");
+        </SCRIPT><%
+                    }
 
-          } else {
+                }
 
-          }
-
-      }
-  } catch (Exception e) {
+            }
+        } catch (Exception e) {
         %><script type="text/javascript">
             alert("Ocorreu um erro interno, tente novamente ou contate um administrador.");
         </script><%
@@ -167,7 +163,7 @@
                                 </div>
                             </div>
                         </form>
-                        <button class="btnRegister" onclick="register()" style="display: inline;">Registrar-se</button>
+                        <button class="btnRegister" onclick="return register()" style="display: inline;">Registrar-se</button>
                     </fieldset>
                 </div>
 

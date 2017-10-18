@@ -16,7 +16,7 @@ function finishRegister() {
         //alert('Cadastro efetuado com sucesso!');
         document.getElementById("login").style.display = "block";
         document.getElementById("registro").style.display = "none";
-        document.getElementById('register').submit();
+        //document.getElementById('register').submit();
         return true;
         }
         
