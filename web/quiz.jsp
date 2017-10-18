@@ -93,31 +93,31 @@
             <h4>Ultimos testes realizados</h4>
             <table style="width:100%;">
                 <tr>
+                    <td>Teste nro</td>
                     <td>Nome</td>
                     <td>Nota</td>
                 </tr>
                             
                 <%
-                    if(bd.getHistorico().size()<10){
-                        for(int i=0; i<bd.getHistorico().size(); i++){
-                            Historico h= Bd.getHistorico().get(i);%>
-                                <tr>
-                                    <td><%=h.getNome() %></td>
-                                    <td><%=h.getNota() %></td>
-                                </tr>
-                        <%}}else if(bd.getHistorico().size()>=10){
-                            for(int i=(bd.getHistorico().size())-10; i<bd.getHistorico().size(); i++){
-                                Historico h= Bd.getHistorico().get(i);%>
-                                    <tr>
-                                        <td><%=h.getNome() %></td>
-                                        <td><%=h.getNota() %></td>
-                                    </tr>
-                        <%}}%>
-                                </table>
+                    int j = 0;
+                    int len = bd.getHistorico().size();
+                    if (len > 10)
+                        len = 10;
+                    
+                    for(int i=bd.getHistorico().size() -1; j<len; i--){
+                        j++;
+                        Historico h= Bd.getHistorico().get(i);%>
+                            <tr>
+                                <td><%=i + 1 %></td>
+                                <td><%=h.getNome() %></td>
+                                <td><%=h.getNota() %></td>
+                            </tr>
+                    <%}%>
+                            </table>
                             </div>
                     <%}%>
                     
-        </div>>
+        </div>
         <%}else{
                 response.sendRedirect(request.getContextPath() + "/login.jsp");
                 }%>
