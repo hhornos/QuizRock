@@ -57,15 +57,53 @@
                     
                     
                     <div class="bg-faded">
-                    <%out.print("<script>alert('Parabens você acertou : "+acertos+" ');</script>");
-                    out.println("media de acertos: "+q.getMedia());
-                    out.println("Nome do usuário atribuido ao quiz: "+q.getUser());%>
+                    <%out.print("<script>alert('Parabens você acertou : "+acertos+" ');</script>");%>
                     </div>
                     <%  
                    
                     
                 }
-            %>        
+            %>
+            
+        
+                <%
+                    
+                    int soma = 0;
+                    double indice = 0;
+                    Bd bd = new Bd();
+                    
+                    for(int i=0;i<bd.getHistorico().size();i++){
+                        Historico h= Bd.getHistorico().get(i);
+                        
+                        if((h.getNome())==(username)){
+                            soma = soma+h.getNota();
+                            indice ++;
+                        }
+                        }
+                            if (indice != 0){%>
+                                <div class="container">
+                                    <div class="bg-faded p-4 my-4">
+                                        <h4>Sua média de acertos é de: <%=(double)(soma/indice)%></h4>
+                                        <table>
+                                            
+                                            <tr>
+                                                <td>Teste Nro</td>
+                                                <td>Nota</td>
+                                            </tr>
+                                            <%
+                                                for(int i = 0; i<bd.getHistorico().size();i++){
+                                                    Historico h= Bd.getHistorico().get(i);
+                                                
+                                            %>
+                                            <tr>
+                                                <td><%=i+1%></td>
+                                                <td><%=h.getNota()%></td>
+                                            </tr>
+                                                        <%}%>
+                                        </table>
+                                    </div>
+                                </div><%}%>
+        
         <div class="container">
             <div class="bg-faded p-4 my-4">
                 <form method="POST">
@@ -86,36 +124,7 @@
                     <input class="btn btn-success btn-lg" type="submit" name="finalizar" value="Finalizar"/>
                 </form>
             </div>
-<%
-    Bd bd = new Bd();
-    if(bd.getHistorico().size()!=0){%>
-        <div class="bg-faded p-4 my-4">
-            <h4>Ultimos testes realizados</h4>
-            <table style="width:100%;">
-                <tr>
-                    <td>Teste nro</td>
-                    <td>Nome</td>
-                    <td>Nota</td>
-                </tr>
-                            
-                <%
-                    int j = 0;
-                    int len = bd.getHistorico().size();
-                    if (len > 10)
-                        len = 10;
-                    
-                    for(int i=bd.getHistorico().size() -1; j<len; i--){
-                        j++;
-                        Historico h= Bd.getHistorico().get(i);%>
-                            <tr>
-                                <td><%=i + 1 %></td>
-                                <td><%=h.getNome() %></td>
-                                <td><%=h.getNota() %></td>
-                            </tr>
-                    <%}%>
-                            </table>
-                            </div>
-                    <%}%>
+    
                     
         </div>
         <%}else{
