@@ -3,8 +3,9 @@
     Created on : 11/10/2017, 21:41:56
     Author     : hhornos
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="br.com.fatecpg.quiz.Historico"%>
+<%@page import="br.com.fatecpg.quiz.Bd"%>
 <!DOCTYPE html>
 <html lang="br">
     <head>
@@ -124,18 +125,121 @@
                 </div>
                 <br/>
             </div>
-
+        </div>
+    </div>
+        <div class="container">
             <div id="all-score" class="bg-faded p-4 my-4">
+                
                 <hr class="divider">
                 <h2 class="text-center text-lg text-uppercase my-0">
                     <strong>Placar Geral</strong>
                 </h2>
-                <hr class="divider">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam soluta dolore voluptatem, deleniti dignissimos excepturi veritatis cum hic sunt perferendis ipsum perspiciatis nam officiis sequi atque enim ut! Velit, consectetur.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam pariatur perspiciatis reprehenderit illo et vitae iste provident debitis quos corporis saepe deserunt ad, officia, minima natus molestias assumenda nisi velit?</p>
-            </div>
+                
+                <%  Bd bd = new Bd();
+                    
+                    int j = 0;
+                    int len = bd.getHistorico().size();
+                    if (len > 10)
+                        len = 10;
+                
+                    if(bd.getHistorico().size()!=0){
+                    int[] arrayNumeros = null;
+                    arrayNumeros = new int[bd.getHistorico().size()];
+                    String[] arrayNomes = new String[bd.getHistorico().size()];
 
-        </div>
+                    for(int i=0;i<bd.getHistorico().size();i++){
+                        Historico h= Bd.getHistorico().get(i);
+                        arrayNumeros[i] = h.getNota();
+                        arrayNomes[i] = h.getNome();
+                    }
+                    int aux = 0;
+                    String auxiliar = "";
+
+                        for (int i = 0; i < arrayNumeros.length; i++){
+                            
+                            for (int x = 0; x < arrayNumeros.length; x++){
+                                if (arrayNumeros[i] > arrayNumeros[x]){
+
+                                aux = arrayNumeros[i];
+                                auxiliar = arrayNomes[i];
+                                arrayNumeros[i] = arrayNumeros[x];
+                                arrayNumeros[x] = aux;
+                                arrayNomes[i] = arrayNomes[x];
+                                arrayNomes[i] = auxiliar;
+                            }
+                        }
+                    }%>
+                    
+                    <table style="width:100%;">
+                        <tr>
+                            <td>Posição</td>
+                            <td>Nome</td>
+                            <td>Nota</td>
+                        </tr>
+                        <%
+                        
+                        if(arrayNumeros.length<=10){    
+                        for(int c = 0; c<arrayNumeros.length;c++){
+                        %>
+                        <tr>
+                            <td><%=c+1%></td>
+                            <td><%=arrayNomes[c]%></td>
+                            <td><%=arrayNumeros[c]%></td>
+                        </tr>
+                        <%}}else {
+                        for(int c = 0; c<10;c++){
+                        %>
+                        <tr>
+                            <td><%=c+1%></td>
+                            <td><%=arrayNomes[c]%></td>
+                            <td><%=arrayNumeros[c]%></td>
+                        </tr>
+                        <%}}%>
+                    </table>
+                    
+                
+                <hr class="divider">
+                <h2 class="text-center text-lg text-uppercase my-0">
+                    <strong>Ultimos testes realizados</strong>
+                </h2>
+                
+                <hr class="divider">
+                <%  
+                    
+                    
+                    %>
+                
+                    <table style="width:100%;">
+                        <tr>
+                            <td>Teste nro</td>
+                            <td>Nome</td>
+                            <td>Nota</td>
+                        </tr>
+                  
+                    
+                
+                    <%
+                    
+                    
+                    for(int i=bd.getHistorico().size() -1; j<len; i--){
+                        j++;
+                        Historico h= Bd.getHistorico().get(i);%>
+                            <tr>
+                                <td><%=i + 1 %></td>
+                                <td><%=h.getNome() %></td>
+                                <td><%=h.getNota() %></td>
+                            </tr>
+                    <%}%>
+                            </table>
+                    <%}%>
+                    
+                    
+                
+            </div>
+        </div>  
+                
+                
+        
         <!-- /.container -->
         <%@include file="WEB-INF/footer.jspf" %>
     </body>
