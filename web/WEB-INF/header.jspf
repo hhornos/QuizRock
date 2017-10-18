@@ -5,7 +5,7 @@
     HttpSession sessao = request.getSession();
     String username = "";
     username = (String) sessao.getAttribute("userName");
-    
+
 %>
 
 
@@ -29,39 +29,69 @@
                 <li class="nav-item px-lg-4">
                     <a class="nav-link text-uppercase text-expanded" href="home.jsp#all-score">Placar Geral</a>
                 </li>
+                </ul>
                 <%if (username == null) {%>
-                <li class="nav-item px-lg-4">
-                    <a class="nav-link text-uppercase text-expanded" href="login.jsp">Log-In</a>
-                </li>
+                <!--                <li class="nav-item px-lg-4">
+                                    <a class="nav-link text-uppercase text-expanded" href="login.jsp">Log-In</a>
+                                </li>-->
+                <ul  class="nav navbar-nav  navbar-right">
+                    <!-- Split dropup button -->
+                    <li class="nav-tem"><div class="btn-group ">
+                            <button type="button" class="btn btn-secondary" onclick="window.location.href='login.jsp'">
+                                Login
+                            </button>
+                    </li>
+                </ul>
                 <%}%>
-            </ul>
+            
             <%if (username != null) {%>
             <ul  class="nav navbar-nav  navbar-right">
-                <li class="nav-item"><p>Bem Vindo <%=username%><p></li>
-                <form id="form_id" method="GET" onsubmit="return false;">
-                    <input type="hidden" name="logout" value="true" />
-                    <li class="nav-item"><a href="javascript:{}" onclick="document.getElementById('form_id').submit(); return false;">logout</a> 
-                </form>
-                
-                <%try{
-                    if(request.getParameter("logout") != null){
-                        sessao.invalidate();
-                        
-                        %>
-                    <script type="text/javascript">
-			
-			if(window.location.search){
-				//document.getElementById("form-clear").submit();
-				window.location.search = "";
-			}
-		</script>
-                    <%
+                <!-- Split dropup button -->
+                <li class="nav-tem"><div class="btn-group ">
+                        <button type="button" class="btn btn-secondary" disabled>
+                            Bem Vindo &nbsp;<%=username%>
+                        </button>
+                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+
+
+                            <form id="form_id" method="GET" onsubmit="return false;">
+
+                                <input type="hidden" name="logout" value="true" />
+                                <a class="dropdown-item" href="javascript:{}" onclick="document.getElementById('form_id').submit(); return false;">Logout</a>
+
+                            </form>
+
+
+                            </ul>
+
+                        </div></li>
+
+                <!--                <form id="form_id" method="GET" onsubmit="return false;">
+                                    <input type="hidden" name="logout" value="true" />
+                                    <li class="nav-item"><a href="javascript:{}" onclick="document.getElementById('form_id').submit(); return false;">logout</a> 
+                                </form>-->
+
+                <%try {
+                        if (request.getParameter("logout") != null) {
+                            sessao.invalidate();
+
+                %>
+                <script type="text/javascript">
+
+                    if (window.location.search) {
+                        //document.getElementById("form-clear").submit();
+                        window.location.search = "";
                     }
-                    
-                } catch(Exception e){
-                    
-                }%>
-                
+                </script>
+                <%                            }
+
+                    } catch (Exception e) {
+
+                    }%>
+
             </ul>
             <%}%>
         </div>

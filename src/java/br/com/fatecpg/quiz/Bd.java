@@ -46,4 +46,14 @@ public class Bd {
         }
         return false;
     }
+    
+    public static boolean verifUserExist(String user){
+        getUsuario();
+        for(Usuario f: usuario){
+            if(f.getLogin().equals(user)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

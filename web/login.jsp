@@ -43,7 +43,7 @@
 
         <script src='./assets/vendor/jquery/jquery.min.js' type="text/javascript"  ></script>
         <script src="assets/js/login.js" defer="defer"></script>
-        
+
         <style>
             .box {
                 margin-left: 35%;
@@ -89,6 +89,8 @@
         <%
             Bd bd = new Bd();
             boolean isError = false;
+            boolean isError2 = false;
+            String erroRegistro = "";
             try {
                 if (request.getParameter("login") != null) {
                     Usuario user = new Usuario(request.getParameter("userName"), request.getParameter("password"));
@@ -102,12 +104,25 @@
                     }
                 }
                 if (request.getParameter("register") != null) {
-                    if (request.getParameter("newPassword").equals(request.getParameter("newPasswordConfirm"))) {
-                        Usuario user = new Usuario(request.getParameter("newUserName"), request.getParameter("newPassword"));
-                        bd.addUsuario(user);
-                    }
-                }
-            } catch (Exception e) {
+                    if (!bd.verifUserExist(request.getParameter("newUserName"))) {
+                        if (request.getParameter("newPassword").equals(request.getParameter("newPasswordConfirm"))) {
+                            Usuario user = new Usuario(request.getParameter("newUserName"), request.getParameter("newPassword"));
+                            bd.addUsuario(user);
+
+                        } else {
+        %><SCRIPT TYPE="text/javascript">
+
+            alert("Usuário já cadastrado!");
+
+        </SCRIPT><%
+              }
+
+          } else {
+
+          }
+
+      }
+  } catch (Exception e) {
         %><script type="text/javascript">
             alert("Ocorreu um erro interno, tente novamente ou contate um administrador.");
         </script><%
@@ -120,6 +135,7 @@
                     <fieldset>
                         <legend>LOGIN</legend>
                         <form action="" id="loginForm" method="POST">
+
                             <% if (isError) { %>    
                             <div class="alert alert-danger">
                                 <strong>Erro!</strong> Nome de usuário ou senha inválidos.
@@ -154,11 +170,12 @@
                         <button class="btnRegister" onclick="register()" style="display: inline;">Registrar-se</button>
                     </fieldset>
                 </div>
-                            
+
                 <div id="registro" class="box bg-faded" style="display: none;">
                     <fieldset>
                         <legend>NOVO USUÁRIO</legend>
                         <form action="" id="loginForm" method="POST">
+
                             <div class="row">
                                 <div class="col-lg-3">
                                     <label>Usuário</label>
@@ -177,7 +194,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-3">
-                                     <label>Confirmar Senha</label>
+                                    <label>Confirmar Senha</label>
                                 </div>
                                 <div class="col-lg-9">
                                     <input type="password" name="newPasswordConfirm" id="newPasswordConfirm" required style="margin-top: 8px"/>
@@ -185,7 +202,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <input class="btnLogin" type="submit" name="register" onclick="return finishRegister();" value="Cadastrar">
+                                    <input class="btnLogin" type="submit" name="register" onclick="return finishRegister()" value="Cadastrar">
                                 </div>
                                 <div class="col-lg-6">
                                     <input class="btnCancel" type="button" value="Cancelar" onclick="cancelRegister()" style="display: inline">
@@ -195,24 +212,24 @@
                     </fieldset>
                 </div>
 
-<!--                <div id="registro" style="display: none;">
-                    <fieldset>
-                        <legend>Novo Usuário</legend>
-                        <form method="POST" id="register">
-                            <label>Usuário</label>
-                            <input type="text" name="newUserName"  required />
-                            </br>
-                            <label>Senha</label>
-                            <input type="password" name="newPassword" id="newPassword" required />
-                            </br>
-                            <label>Confirmar Senha</label>
-                            <input type="password" name="newPasswordConfirm" id="newPasswordConfirm" required />
-                            </br>
-                            </br>
-                            <input type="submit" name="register" onclick="return finishRegister();" value="Cadastrar">
-                        </form>
-                    </fieldset>
-                </div>-->
+                <!--                <div id="registro" style="display: none;">
+                                    <fieldset>
+                                        <legend>Novo Usuário</legend>
+                                        <form method="POST" id="register">
+                                            <label>Usuário</label>
+                                            <input type="text" name="newUserName"  required />
+                                            </br>
+                                            <label>Senha</label>
+                                            <input type="password" name="newPassword" id="newPassword" required />
+                                            </br>
+                                            <label>Confirmar Senha</label>
+                                            <input type="password" name="newPasswordConfirm" id="newPasswordConfirm" required />
+                                            </br>
+                                            </br>
+                                            <input type="submit" name="register" onclick="return finishRegister();" value="Cadastrar">
+                                        </form>
+                                    </fieldset>
+                                </div>-->
             </div>
         </div>
         <%@include file="WEB-INF/footer.jspf" %>
