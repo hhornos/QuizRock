@@ -3,13 +3,14 @@
     Created on : 11/10/2017, 21:41:56
     Author     : hhornos
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="br.com.fatecpg.quiz.Historico"%>
+<%@page import="br.com.fatecpg.quiz.Bd"%>
 <!DOCTYPE html>
 <html lang="br">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Acervo de Conhecimento do Classic Rock - QUIZZ CLASSIC ROCK">
+        <meta name="description" content="Acervo de Conhecimento do Classic Rock - QUIZ CLASSIC ROCK">
         <meta name="author" content="Equipe Fatec">
 
         <title>Quiz Classic Rock</title>
@@ -26,7 +27,7 @@
 
     <body>
         <%@include file="WEB-INF/header.jspf" %>
-        <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 pt-5 d-none d-lg-block">Quizz Classic Rock</div>
+        <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 pt-5 d-none d-lg-block">Quiz Classic Rock</div>
         <div class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-5 d-none d-lg-block">Praça 19 de janeiro, 144 - Praia Grande - São Paulo - CEP: 11700-100<br/>Tel: (13) 3591-1303 / (13) 3591-6968</div>
         <div class="container">
 
@@ -82,7 +83,7 @@
                     <div class="col-md-9">
                         <h2>Henrique Escobar Hornos</h2>
                         <br/>
-                        <p>Analista/Desenvolvedor de terminais embarcados, especialista no mercado de pagamentos eletronico, aprendendo programação programação WEB FULL STACK utilizando Java EE, entusiasta de software livre e apaixonado por música</p>
+                        <p>Analista/Desenvolvedor de terminais embarcados, especialista no mercado de pagamentos eletronico, aprendendo programação WEB FULL STACK utilizando Java EE, entusiasta de software livre e apaixonado por música</p>
                     </div>
                     <br/>
                 </div>
@@ -106,7 +107,7 @@
                     <div class="col-md-9">
                         <h2>Luiz Maciel S. dos Santos</h2>
                         <br/>
-                        <p>Adicione Aqui o seu cargo</p>
+                        <p>Desenvolvedor back end, realizando curso superior de análise e desenvolvimento de sistemas, aprendendo programação orientada a objeto</p>
                     </div> 
                     <br/>
                 </div>
@@ -118,24 +119,129 @@
                     <div class="col-md-9">
                         <h2>Vinicius Loreto Ferreira </h2>
                         <br/>
-                        <p>Adicione Aqui o seu cargo</p>
+                        <p>Analista e desenvolvedor de sistemas/ Técnico em desenvolvimento de sistemas elétricos / Pesquisador de novas tecnologias nos campos da informática.</p>
                     </div>
                     <br/>
                 </div>
                 <br/>
             </div>
+        </div>
 
+        <div class="container">
             <div id="all-score" class="bg-faded p-4 my-4">
+                
                 <hr class="divider">
                 <h2 class="text-center text-lg text-uppercase my-0">
                     <strong>Placar Geral</strong>
                 </h2>
                 <hr class="divider">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam soluta dolore voluptatem, deleniti dignissimos excepturi veritatis cum hic sunt perferendis ipsum perspiciatis nam officiis sequi atque enim ut! Velit, consectetur.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam pariatur perspiciatis reprehenderit illo et vitae iste provident debitis quos corporis saepe deserunt ad, officia, minima natus molestias assumenda nisi velit?</p>
-            </div>
+                <hr>
+                
+                <%  Bd bd = new Bd();
+                    
+                    int j = 0;
+                    int len = bd.getHistorico().size();
+                    if (len > 10)
+                        len = 10;
+                
+                    if(bd.getHistorico().size()!=0){
+                    int[] arrayNumeros = null;
+                    arrayNumeros = new int[bd.getHistorico().size()];
+                    String[] arrayNomes = new String[bd.getHistorico().size()];
 
+                    for(int i=0;i<bd.getHistorico().size();i++){
+                        Historico h= Bd.getHistorico().get(i);
+                        arrayNumeros[i] = h.getNota();
+                        arrayNomes[i] = h.getNome();
+                    }
+                    int aux = 0;
+                    String auxiliar = "";
+
+                        for (int i = 0; i < arrayNumeros.length; i++){
+                            
+                            for (int x = 0; x < arrayNumeros.length; x++){
+                                if (arrayNumeros[i] > arrayNumeros[x]){
+
+                                aux = arrayNumeros[i];
+                                auxiliar = arrayNomes[i];
+                                arrayNumeros[i] = arrayNumeros[x];
+                                arrayNumeros[x] = aux;
+                                arrayNomes[i] = arrayNomes[x];
+                                arrayNomes[i] = auxiliar;
+                            }
+                        }
+                    }%>
+                    
+                    <table class="table">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>Posição</th>
+                                <th>Nome</th>
+                                <th>Nota</th>
+                            </tr>
+                        </thead>
+                        <%
+                        
+                        if(arrayNumeros.length<=10){    
+                        for(int c = 0; c<arrayNumeros.length;c++){
+                        %>
+                        <tbody>
+                        <tr>
+                            <td><%=c+1%></td>
+                            <td><%=arrayNomes[c]%></td>
+                            <td><%=arrayNumeros[c]%></td>
+                        </tr>
+                        </tbody>
+                        <%}}else {
+                        for(int c = 0; c<10;c++){
+                        %>
+                        <tbody>
+                            <tr>
+                                <td><%=c+1%></td>
+                                <td><%=arrayNomes[c]%></td>
+                                <td><%=arrayNumeros[c]%></td>
+                            </tr>
+                        </tbody>
+                        <%}}%>
+                    </table>
+                    <br/>
+            </div>
+        </div>  
+        <div class="container">
+            <div id="last-test" class="bg-faded p-4 my-4">           
+                
+                <hr class="divider">
+                <h2 class="text-center text-lg text-uppercase my-0">
+                    <strong>Testes Recentes</strong>
+                </h2>
+                <hr class="divider">
+                    <table class="table">
+                        <thead class="table-inverse">
+                            <tr>
+                                <td>Teste Nro</td>
+                                <td>Nome</td>
+                                <td>Nota</td>
+                            </tr>
+                        </thead>
+                    <%
+                    
+                    
+                    for(int i=bd.getHistorico().size() -1; j<len; i--){
+                        j++;
+                        Historico h= Bd.getHistorico().get(i);%>
+                        <tbody>
+                            <tr>
+                                <td><%=i + 1 %></td>
+                                <td><%=h.getNome() %></td>
+                                <td><%=h.getNota() %></td>
+                            </tr>
+                        </tbody>
+                    <%}%>
+                            </table>
+                    <%}%>
+            </div>
         </div>
+
         <!-- /.container -->
         <%@include file="WEB-INF/footer.jspf" %>
     </body>
