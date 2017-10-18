@@ -13,7 +13,7 @@
 <html>
     <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Acervo de Conhecimento do Classic Rock - QUIZZ CLASSIC ROCK">
+    <meta name="description" content="Acervo de Conhecimento do Classic Rock - QUIZ CLASSIC ROCK">
     <meta name="author" content="Equipe Fatec">
 
     <title>Quiz Classic Rock</title>
@@ -29,7 +29,7 @@
     </head>
     <body>
         <%@include file="./WEB-INF/header.jspf" %>
-        <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 pt-5 d-none d-lg-block">Quizz Classic Rock</div>
+        <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 pt-5 d-none d-lg-block">Quiz Classic Rock</div>
         <% if (username != null) {
                 if (request.getParameter("finalizar") != null) {
                     int acertos = 0;
@@ -83,22 +83,34 @@
                             if (indice != 0){%>
                                 <div class="container">
                                     <div class="bg-faded p-4 my-4">
-                                        <h4>Sua média de acertos é de: <%=(double)(soma/indice)%></h4>
-                                        <table>
-                                            
-                                            <tr>
-                                                <td>Teste Nro</td>
-                                                <td>Nota</td>
-                                            </tr>
+                                        <hr class="divider">
+                                        <h2 class="text-center text-lg text-uppercase my-0">
+                                            <strong>Estatística Individual</strong>
+                                        </h2>
+                                        <hr class="divider">
+
+                                        <h4>Sua média de acertos é de: <%out.print(String.format("%.2f%%", (double)(soma/indice)));%></h4>
+                                        <br/>
+                                        <p>Testes Realizados:</p>
+                                        <hr>
+                                        <table class="table" style="width:50%;">
+                                            <thead class="table-inverse">
+                                                <tr>
+                                                    <td>Teste Nro</td>
+                                                    <td>Nota</td>
+                                                </tr>
+                                            </thead>
                                             <%
                                                 for(int i = 0; i<bd.getHistorico().size();i++){
                                                     Historico h= Bd.getHistorico().get(i);
                                                 
                                             %>
-                                            <tr>
-                                                <td><%=i+1%></td>
-                                                <td><%=h.getNota()%></td>
-                                            </tr>
+                                            <tbody>
+                                                <tr>
+                                                    <td><%=i+1%></td>
+                                                    <td><%=h.getNota()%></td>
+                                                </tr>
+                                            </tbody>
                                                         <%}%>
                                         </table>
                                     </div>

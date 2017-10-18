@@ -10,7 +10,7 @@
 <html lang="br">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Acervo de Conhecimento do Classic Rock - QUIZZ CLASSIC ROCK">
+        <meta name="description" content="Acervo de Conhecimento do Classic Rock - QUIZ CLASSIC ROCK">
         <meta name="author" content="Equipe Fatec">
 
         <title>Quiz Classic Rock</title>
@@ -27,7 +27,7 @@
 
     <body>
         <%@include file="WEB-INF/header.jspf" %>
-        <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 pt-5 d-none d-lg-block">Quizz Classic Rock</div>
+        <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 pt-5 d-none d-lg-block">Quiz Classic Rock</div>
         <div class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-5 d-none d-lg-block">Praça 19 de janeiro, 144 - Praia Grande - São Paulo - CEP: 11700-100<br/>Tel: (13) 3591-1303 / (13) 3591-6968</div>
         <div class="container">
 
@@ -83,7 +83,7 @@
                     <div class="col-md-9">
                         <h2>Henrique Escobar Hornos</h2>
                         <br/>
-                        <p>Analista/Desenvolvedor de terminais embarcados, especialista no mercado de pagamentos eletronico, aprendendo programação programação WEB FULL STACK utilizando Java EE, entusiasta de software livre e apaixonado por música</p>
+                        <p>Analista/Desenvolvedor de terminais embarcados, especialista no mercado de pagamentos eletronico, aprendendo programação WEB FULL STACK utilizando Java EE, entusiasta de software livre e apaixonado por música</p>
                     </div>
                     <br/>
                 </div>
@@ -126,7 +126,7 @@
                 <br/>
             </div>
         </div>
-    </div>
+
         <div class="container">
             <div id="all-score" class="bg-faded p-4 my-4">
                 
@@ -134,6 +134,8 @@
                 <h2 class="text-center text-lg text-uppercase my-0">
                     <strong>Placar Geral</strong>
                 </h2>
+                <hr class="divider">
+                <hr>
                 
                 <%  Bd bd = new Bd();
                     
@@ -170,76 +172,76 @@
                         }
                     }%>
                     
-                    <table style="width:100%;">
-                        <tr>
-                            <td>Posição</td>
-                            <td>Nome</td>
-                            <td>Nota</td>
-                        </tr>
+                    <table class="table">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>Posição</th>
+                                <th>Nome</th>
+                                <th>Nota</th>
+                            </tr>
+                        </thead>
                         <%
                         
                         if(arrayNumeros.length<=10){    
                         for(int c = 0; c<arrayNumeros.length;c++){
                         %>
+                        <tbody>
                         <tr>
                             <td><%=c+1%></td>
                             <td><%=arrayNomes[c]%></td>
                             <td><%=arrayNumeros[c]%></td>
                         </tr>
+                        </tbody>
                         <%}}else {
                         for(int c = 0; c<10;c++){
                         %>
-                        <tr>
-                            <td><%=c+1%></td>
-                            <td><%=arrayNomes[c]%></td>
-                            <td><%=arrayNumeros[c]%></td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td><%=c+1%></td>
+                                <td><%=arrayNomes[c]%></td>
+                                <td><%=arrayNumeros[c]%></td>
+                            </tr>
+                        </tbody>
                         <%}}%>
                     </table>
-                    
+                    <br/>
+            </div>
+        </div>  
+        <div class="container">
+            <div id="last-test" class="bg-faded p-4 my-4">           
                 
                 <hr class="divider">
                 <h2 class="text-center text-lg text-uppercase my-0">
-                    <strong>Ultimos testes realizados</strong>
+                    <strong>Testes Recentes</strong>
                 </h2>
-                
                 <hr class="divider">
-                <%  
-                    
-                    
-                    %>
-                
-                    <table style="width:100%;">
-                        <tr>
-                            <td>Teste nro</td>
-                            <td>Nome</td>
-                            <td>Nota</td>
-                        </tr>
-                  
-                    
-                
+                    <table class="table">
+                        <thead class="table-inverse">
+                            <tr>
+                                <td>Teste Nro</td>
+                                <td>Nome</td>
+                                <td>Nota</td>
+                            </tr>
+                        </thead>
                     <%
                     
                     
                     for(int i=bd.getHistorico().size() -1; j<len; i--){
                         j++;
                         Historico h= Bd.getHistorico().get(i);%>
+                        <tbody>
                             <tr>
                                 <td><%=i + 1 %></td>
                                 <td><%=h.getNome() %></td>
                                 <td><%=h.getNota() %></td>
                             </tr>
+                        </tbody>
                     <%}%>
                             </table>
                     <%}%>
-                    
-                    
-                
             </div>
-        </div>  
-                
-                
-        
+        </div>
+
         <!-- /.container -->
         <%@include file="WEB-INF/footer.jspf" %>
     </body>
